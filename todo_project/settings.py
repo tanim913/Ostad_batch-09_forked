@@ -25,20 +25,13 @@ SECRET_KEY = 'django-insecure-^=kn+1e3qi0rxqwk*bnt14qhnhl&xos(z&12@9+g3-2cg5o(4_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'subclimatic-sherri-nonprovocatively.ngrok-free.dev',
-    '.ngrok-free.dev',  # Allow all ngrok-free.dev subdomains
-    '.ngrok.io',  # Allow all ngrok.io subdomains (for paid ngrok)
-    'testtttttt-kf9v.onrender.com'
-]
+ALLOWED_HOSTS = ['*']
 
 # CSRF trusted origins for ngrok
 # Note: Django doesn't support wildcards in CSRF_TRUSTED_ORIGINS
 # If you get a new ngrok domain, add it here
 CSRF_TRUSTED_ORIGINS = [
-    'https://subclimatic-sherri-nonprovocatively.ngrok-free.dev',
+    'https://*.onrender.com',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
@@ -58,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
